@@ -37,7 +37,6 @@ function Promise(executor){
 
   }
   try{
-    //因为此函数执行可能会异常，所以需要捕获，如果出错了，需要用错误 对象reject
     executor(resolve,reject);
   }catch(e){
     //如果这函数执行失败了，则用失败的原因reject这个promise
@@ -57,9 +56,7 @@ function resolvePromise(promise2,x,resolve,reject){
     }else{
       x.then(resolve,reject);
     }
-  //x是一个thenable对象或函数，只要有then方法的对象，
   }else if(x!= null &&((typeof x=='object')||(typeof x == 'function'))){
-    //当我们的promise和别的promise进行交互，编写这段代码的时候尽量的考虑兼容性，允许别人瞎写
    try{
      let then = x.then;
      if(typeof then == 'function'){
