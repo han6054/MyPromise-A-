@@ -184,8 +184,7 @@ Promise.race = function(promises){
     }
   });
 }
-//返回一个立刻成功的promise
-//别人提供 给你一个方法，需要你传入一个promise,但你只有一个普通的值，你就可以通过这个方法把这个普通的值(string number object)转成一个promise对象
+
 Promise.resolve = function(value){
   return new Promise(function(resolve){
     resolve(value);
